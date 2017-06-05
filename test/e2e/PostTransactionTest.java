@@ -31,7 +31,7 @@ public class PostTransactionTest extends WithApplication {
     public void test_whenTransactionIsReceived_thenRespondsWithHTTP201() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(POST)
-                .bodyJson(Json.toJson(new Transaction(12.3, "1478192204000")))
+                .bodyJson(Json.toJson(new Transaction(12.3, String.valueOf(Instant.now().toEpochMilli()))))
                 .uri("/transactions");
 
         Result result = route(app, request);
